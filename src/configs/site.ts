@@ -4,11 +4,11 @@
  */
 export const SITE_CONFIG = {
 	metadata: {
-		title: "startcn-base",
+		title: "ript1411-advanced-web-development",
 		description:
 			"Production-ready web application starter built with TanStack Start, React 19, shadcn/ui, Tailwind CSS v4, and Supabase.",
 		keywords: [
-			"startcn-base",
+			"ript1411-advanced-web-development",
 			"tanstack start",
 			"react 19",
 			"shadcn",
@@ -18,10 +18,10 @@ export const SITE_CONFIG = {
 		],
 	},
 	app: {
-		title: "startcn-base",
+		title: "ript1411-advanced-web-development",
 		slogan: "Production-ready web application starter.",
-		url: "https://startcn-base.vercel.app",
-		github: "https://github.com/daFoggo/startcn-base",
+		url: "https://ript1411-advanced-web-development.vercel.app",
+		github: "https://github.com/daFoggo/ript1411-advanced-web-development",
 		ogImage: "/og-image.png",
 	},
 } as const;
