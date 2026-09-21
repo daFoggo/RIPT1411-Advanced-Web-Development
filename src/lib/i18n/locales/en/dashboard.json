@@ -1,0 +1,23 @@
+{
+	"skipToContent": "Skip to content",
+	"backToSite": "Back to website",
+	"toggleSidebar": "Toggle sidebar",
+	"signIn": "Sign in",
+	"signOut": "Sign out",
+	"index": {
+		"title": "Dashboard",
+		"description": "Welcome to your admin dashboard. This is a starter placeholder ready for your content."
+	},
+	"nav": {
+		"overview": "Overview",
+		"dashboard": "Dashboard",
+		"management": "Management",
+		"users": "Users",
+		"analytics": "Analytics",
+		"settings": "Settings"
+	},
+	"placeholder": {
+		"title": "Dashboard Area",
+		"description": "This is a placeholder for your dashboard content. Build your custom features, analytics, and data tables here."
+	}
+}

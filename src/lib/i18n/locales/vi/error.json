@@ -1,0 +1,9 @@
+{
+	"notFoundTitle": "Ôi! Trang bạn đang tìm không tồn tại.",
+	"goBackHome": "Về trang chủ",
+	"serverError": "Đã xảy ra lỗi từ phía chúng tôi.",
+	"tryAgain": "Thử lại",
+	"failedSection": "Không thể tải phần này",
+	"unexpected": "Đã xảy ra lỗi không mong muốn khi hiển thị chế độ xem này.",
+	"reloadSection": "Thử tải lại phần này"
+}

@@ -1,0 +1,23 @@
+{
+	"signIn": "Sign in",
+	"signOut": "Sign out",
+	"dashboard": "Dashboard",
+	"backToTop": "Back to top",
+	"languageLabel": "Language",
+	"changeLanguage": "Change language",
+	"language": {
+		"en": "English",
+		"vi": "Tiếng Việt"
+	},
+	"nav": {
+		"home": "Home",
+		"features": "Features",
+		"docs": "Documentation",
+		"components": "Components",
+		"dashboard": "Dashboard"
+	},
+	"footer": {
+		"rights": "All rights reserved.",
+		"slogan": "Production-ready web application starter built with TanStack Start, React 19, and Tailwind CSS v4."
+	}
+}

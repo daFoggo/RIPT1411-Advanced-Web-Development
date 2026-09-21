@@ -1,0 +1,23 @@
+{
+	"signIn": "Đăng nhập",
+	"signOut": "Đăng xuất",
+	"dashboard": "Bảng điều khiển",
+	"backToTop": "Lên đầu trang",
+	"languageLabel": "Ngôn ngữ",
+	"changeLanguage": "Đổi ngôn ngữ",
+	"language": {
+		"en": "English",
+		"vi": "Tiếng Việt"
+	},
+	"nav": {
+		"home": "Trang chủ",
+		"features": "Tính năng",
+		"docs": "Tài liệu",
+		"components": "Giao diện mẫu",
+		"dashboard": "Quản trị"
+	},
+	"footer": {
+		"rights": "Bảo lưu mọi quyền.",
+		"slogan": "Bộ khung khởi tạo ứng dụng web hiện đại với TanStack Start, React 19 và Tailwind CSS v4."
+	}
+}

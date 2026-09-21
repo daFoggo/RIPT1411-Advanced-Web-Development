@@ -1,0 +1,9 @@
+{
+	"notFoundTitle": "Oops! The page you are looking for does not exist.",
+	"goBackHome": "Go back home",
+	"serverError": "Something went wrong on our end.",
+	"tryAgain": "Try again",
+	"failedSection": "Failed to load section",
+	"unexpected": "An unexpected error occurred while rendering this view.",
+	"reloadSection": "Try reloading section"
+}

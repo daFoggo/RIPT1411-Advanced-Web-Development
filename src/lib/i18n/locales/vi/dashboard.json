@@ -1,0 +1,23 @@
+{
+	"skipToContent": "Bỏ qua điều hướng",
+	"backToSite": "Quay lại website",
+	"toggleSidebar": "Bật/tắt sidebar",
+	"signIn": "Đăng nhập",
+	"signOut": "Đăng xuất",
+	"index": {
+		"title": "Bảng điều khiển",
+		"description": "Chào mừng bạn đến với trang quản trị. Đây là khu vực placeholder sẵn sàng để phát triển nội dung."
+	},
+	"nav": {
+		"overview": "Tổng quan",
+		"dashboard": "Bảng điều khiển",
+		"management": "Quản lý",
+		"users": "Người dùng",
+		"analytics": "Thống kê",
+		"settings": "Cài đặt"
+	},
+	"placeholder": {
+		"title": "Khu vực Bảng điều khiển",
+		"description": "Đây là placeholder cho nội dung dashboard. Hãy bắt đầu xây dựng tính năng, biểu đồ và bảng dữ liệu tùy chỉnh của bạn tại đây."
+	}
+}
