@@ -13,6 +13,11 @@ import {
 } from "@/components/ui/empty";
 import { Skeleton } from "@/components/ui/skeleton";
 import { CartButton, CartDrawer, useCartStore } from "@/features/cart";
+import {
+	FavoriteButton,
+	FavoritesButton,
+	FavoritesDrawer,
+} from "@/features/favorites";
 import { ProductCard, productsQueryOptions } from "@/features/products";
 import { getErrorMessage } from "@/lib/error";
 
@@ -34,6 +39,7 @@ const ProductGridSkeleton = () => (
 
 const ShopPage = () => {
 	const [cartOpen, setCartOpen] = useState(false);
+	const [favoritesOpen, setFavoritesOpen] = useState(false);
 	const { data, isPending, isError, error } = useQuery(productsQueryOptions());
 	const addItem = useCartStore((s) => s.addItem);
 
@@ -48,7 +54,10 @@ const ShopPage = () => {
 						Products powered by the DummyJSON API.
 					</p>
 				</div>
-				<CartButton onOpen={() => setCartOpen(true)} />
+				<div className="flex items-center gap-2">
+					<FavoritesButton onOpen={() => setFavoritesOpen(true)} />
+					<CartButton onOpen={() => setCartOpen(true)} />
+				</div>
 			</header>
 
 			{isPending ? (
@@ -81,11 +90,13 @@ const ShopPage = () => {
 							key={product.id}
 							product={product}
 							onAddToCart={addItem}
+							favoriteAction={<FavoriteButton product={product} />}
 						/>
 					))}
 				</div>
 			)}
 
+			<FavoritesDrawer open={favoritesOpen} onOpenChange={setFavoritesOpen} />
 			<CartDrawer open={cartOpen} onOpenChange={setCartOpen} />
 		</main>
 	);

@@ -12,27 +12,41 @@ import {
 } from "@/components/ui/card";
 import { formatPrice } from "@/lib/format";
 
+import type { ReactNode } from "react";
+
 import type { Product } from "../schemas";
 
 export interface ProductCardProps {
 	product: Product;
 	onAddToCart: (product: Product) => void;
+	/**
+	 * Nút hành động đè lên ảnh (vd: nút yêu thích) — được route/container inject
+	 * vào, products feature không import UI của feature khác.
+	 */
+	favoriteAction?: ReactNode;
 }
 
 /**
- * Thẻ sản phẩm — nhận `onAddToCart` qua props (route/cart feature inject callback,
- * component không tự gọi store của feature khác).
+ * Thẻ sản phẩm — nhận `onAddToCart` / `favoriteAction` qua props (route inject
+ * callback/UI của feature khác, component không tự gọi store của feature khác).
  */
-export const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
+export const ProductCard = ({
+	product,
+	onAddToCart,
+	favoriteAction,
+}: ProductCardProps) => {
 	return (
 		<Card className="overflow-hidden">
-			<div className="aspect-square overflow-hidden bg-muted">
+			<div className="relative aspect-square overflow-hidden bg-muted">
 				<img
 					src={product.thumbnail}
 					alt={product.title}
 					loading="lazy"
 					className="h-full w-full object-cover"
 				/>
+				{favoriteAction && (
+					<div className="absolute top-2 right-2">{favoriteAction}</div>
+				)}
 			</div>
 			<CardHeader>
 				<div className="flex items-start justify-between gap-2">

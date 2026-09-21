@@ -127,6 +127,8 @@
     }
   body {
     @apply bg-background text-foreground;
+    /* Base UI Drawer: overlay cần body có position để phủ viewport trên iOS Safari */
+    position: relative;
     }
   button:not(:disabled), [role="button"]:not(:disabled) {
     cursor: pointer;
