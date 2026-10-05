@@ -12,8 +12,8 @@ export const productKeys = {
  * Query options cho danh sách sản phẩm.
  * Dùng chung được ở route loader, component, và cache API.
  */
-export const productsQueryOptions = (limit = 12) =>
+export const productsQueryOptions = (limit = 10000) =>
 	queryOptions({
 		queryKey: productKeys.list(limit),
-		queryFn: () => getProductsFn(),
+		queryFn: () => getProductsFn({ data: limit }),
 	});

@@ -1,4 +1,6 @@
 import { IconStar } from "@tabler/icons-react";
+import { memo } from "react";
+import type { ReactNode } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -11,9 +13,6 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { formatPrice } from "@/lib/format";
-
-import type { ReactNode } from "react";
-
 import type { Product } from "../schemas";
 
 export interface ProductCardProps {
@@ -27,52 +26,75 @@ export interface ProductCardProps {
 }
 
 /**
- * Thẻ sản phẩm — nhận `onAddToCart` / `favoriteAction` qua props (route inject
- * callback/UI của feature khác, component không tự gọi store của feature khác).
+ * Thẻ sản phẩm — tối ưu hóa với React.memo để ngăn re-render không cần thiết
+ * khi các state cha (giỏ hàng, filter, modal) thay đổi.
+ * Hình ảnh có aspect-ratio cố định và decoding="async" để đạt CLS = 0.
  */
-export const ProductCard = ({
+const ProductCardComponent = ({
 	product,
 	onAddToCart,
 	favoriteAction,
 }: ProductCardProps) => {
 	return (
-		<Card className="overflow-hidden">
-			<div className="relative aspect-square overflow-hidden bg-muted">
-				<img
-					src={product.thumbnail}
-					alt={product.title}
-					loading="lazy"
-					className="h-full w-full object-cover"
-				/>
-				{favoriteAction && (
-					<div className="absolute top-2 right-2">{favoriteAction}</div>
-				)}
-			</div>
-			<CardHeader>
-				<div className="flex items-start justify-between gap-2">
-					<CardTitle className="line-clamp-1">{product.title}</CardTitle>
-					<Badge variant="outline" className="shrink-0 capitalize">
-						{product.category}
-					</Badge>
+		<Card className="overflow-hidden flex flex-col justify-between h-full bg-card ring-1 ring-border/50">
+			<div>
+				<div className="relative aspect-square w-full overflow-hidden bg-muted">
+					<img
+						src={product.thumbnail}
+						alt={product.title}
+						loading="lazy"
+						decoding="async"
+						width={320}
+						height={320}
+						className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+					/>
+					{favoriteAction && (
+						<div className="absolute top-2 right-2">{favoriteAction}</div>
+					)}
 				</div>
-				<CardDescription className="line-clamp-2">
-					{product.description}
-				</CardDescription>
-			</CardHeader>
-			<CardContent className="flex items-center justify-between">
-				<span className="text-base font-semibold">
-					{formatPrice(product.price)}
-				</span>
-				<span className="flex items-center gap-1 text-xs text-muted-foreground">
-					<IconStar className="size-3.5" />
-					{product.rating.toFixed(1)}
-				</span>
-			</CardContent>
-			<CardFooter>
-				<Button className="w-full" onClick={() => onAddToCart(product)}>
-					Add to cart
-				</Button>
-			</CardFooter>
+				<CardHeader className="p-4 pb-2">
+					<div className="flex items-start justify-between gap-2">
+						<CardTitle className="line-clamp-1 text-sm font-semibold">{product.title}</CardTitle>
+						<Badge variant="outline" className="shrink-0 text-[10px] capitalize px-1.5 py-0">
+							{product.category}
+						</Badge>
+					</div>
+					<CardDescription className="line-clamp-2 text-xs">
+						{product.description}
+					</CardDescription>
+				</CardHeader>
+			</div>
+			<div>
+				<CardContent className="p-4 py-2 flex items-center justify-between">
+					<span className="text-sm font-bold text-foreground">
+						{formatPrice(product.price)}
+					</span>
+					<span className="flex items-center gap-1 text-xs text-muted-foreground">
+						<IconStar className="size-3.5 fill-amber-400 text-amber-400" />
+						{product.rating.toFixed(1)}
+					</span>
+				</CardContent>
+				<CardFooter className="p-4 pt-1">
+					<Button
+						size="sm"
+						className="w-full text-xs h-8"
+						onClick={() => onAddToCart(product)}
+					>
+						Add to cart
+					</Button>
+				</CardFooter>
+			</div>
 		</Card>
 	);
 };
+
+export const ProductCard = memo(ProductCardComponent, (prev, next) => {
+	return (
+		prev.product.id === next.product.id &&
+		prev.product.price === next.product.price &&
+		prev.product.stock === next.product.stock &&
+		prev.product.rating === next.product.rating &&
+		prev.onAddToCart === next.onAddToCart &&
+		prev.favoriteAction === next.favoriteAction
+	);
+});
